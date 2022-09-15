@@ -3,9 +3,11 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-import {sequelize} from './database/database.js';
-import taskRouter from './routes/task.routes.js';
-
+//import {sequelize} from './database/database.js';
+const {TaskRouter} = require('./routes/task.routes.js')
+const {catTaskRouter} = require('./routes/cat_estatus.routes')
+const {sequelize} = require('sequelize')
+//import taskRouter from './routes/task.routes.js';
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
@@ -23,7 +25,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/tasks', taskRouter);
+app.use('/task', TaskRouter);
+app.use('/catTask', catTaskRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

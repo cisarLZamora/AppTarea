@@ -7,7 +7,19 @@ const createTask = (req, res) => {
     res.send('creating task')
 }
 
+const deleteTask = (req, res) => {
+    console.log(req.body)
+    res.send('delete task')
+}
+
+const updateTask = (req, res) => {
+    console.log(req.body)
+    res.send('delete task')
+}
+
 module.exports={
     getTask,
-    createTask
+    createTask,
+    deleteTask,
+    updateTask
 }

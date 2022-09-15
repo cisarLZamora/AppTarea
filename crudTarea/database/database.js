@@ -1,6 +1,6 @@
-import Sequelize  from "sequelize";
+var Sequelize = require("sequelize");
 
-export const sequelize= new Sequelize('db_tarea','postgres','1234',{
+const sequelize = new Sequelize('db_tarea','postgres','1234',{
     host: 'localhost',
     dialect: 'postgres',
     pool: {
@@ -11,3 +11,8 @@ export const sequelize= new Sequelize('db_tarea','postgres','1234',{
     }
 })
 
+
+module.exports ={
+    sequelize,
+    Sequelize
+}

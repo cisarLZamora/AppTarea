@@ -1,13 +1,16 @@
-import {DataTypes} from ('sequelize');
-import { sequelize } from "../database/database";
-import { cat_estatus } from './cat_estatus.model';
-const Task = sequelize.define('tarea',{
+//import { sequelize } from "../database/database";
+//import { cat_estatus } from './cat_estatus.model';
+const seqConf = require('../database/database.js');
+var Sequelize = seqConf.Sequelize
+const {cat_status} = require('./cat_estatus')
+
+const Task = seqConf.sequelize.define('tarea',{
     id: {
-        type: DataTypes.UUID,
+        type: Sequelize.UUID,
         autoincrement: true,
         primaryKey: true
     },
-    nombre: {type: DataTypes.STRING}, 
+    nombre: {type: Sequelize.STRING}, 
 },{
     timestamps: true
 });
@@ -17,7 +20,7 @@ taskmodel.hasMany(cat_estatus, {
     sourceKey: 'id'
 })
 
-cat_estatus.belongsTo(taskmodel,{
+cat_status.belongsTo(task,{
     foreignKey: 'fk_id_estatus',
     targetId: 'id' 
 })
