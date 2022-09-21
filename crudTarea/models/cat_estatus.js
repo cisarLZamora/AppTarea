@@ -1,14 +1,17 @@
 const seqConf = require('../database/database.js');
-var Sequelize = seqConf.Sequelize
+var Sequelize = seqConf.Sequelize;
+
 //definir tablas
 
 const cat_status = seqConf.sequelize.define('cat_estatus',{
     id: {
-        type: Sequelize.UUID,
-        autoincrement: true, 
-        primaryKey: true
+        type: Sequelize.UUID, 
+        primaryKey: true, 
+        defaultValue: Sequelize.UUIDV4
     }, 
-    nombre: {type: Sequelize.STRING}
+    name: {type: Sequelize.STRING}
+}, {
+    tableName: 'cat_status'
 })
 
 module.exports={

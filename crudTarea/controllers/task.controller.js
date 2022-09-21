@@ -1,20 +1,44 @@
-const getTask = (req, res) => {
-    res.send('getting projects')
+const Task = require('../models/taskmodel');
+
+const getTask = async (req, res) => {
+    try {
+        const tasks = await Task.findAll();
+        res.json(tasks)
+    } catch (error) {
+        return res.status(500).json({
+            mensaje: error.message
+        })
+    }
 }
 
-const createTask = (req, res) => {
-    console.log(req.body)
-    res.send('creating task')
+const createTask = async (req, res) => {
+    try {
+        const tasks = await Task.findAll();
+    } catch (error) {
+        return res.status(500).json({
+            mensaje: error.message
+        })
+    }
 }
 
-const deleteTask = (req, res) => {
-    console.log(req.body)
-    res.send('delete task')
+const deleteTask = async (req, res) => {
+    try {
+        const tasks = await Task.findAll();
+    } catch (error) {
+        return res.status(500).json({
+            mensaje: error.message
+        })
+    }
 }
 
-const updateTask = (req, res) => {
-    console.log(req.body)
-    res.send('delete task')
+const updateTask = async (req, res) => {
+    try {
+        const tasks = await Task.findAll();
+    } catch (error) {
+        return res.status(500).json({
+            mensaje: error.message
+        })
+    }
 }
 
 module.exports={

@@ -1,5 +1,3 @@
-//import { sequelize } from "../database/database";
-//import { cat_estatus } from './cat_estatus.model';
 const seqConf = require('../database/database.js');
 var Sequelize = seqConf.Sequelize
 const {cat_status} = require('./cat_estatus')
@@ -11,16 +9,20 @@ const Task = seqConf.sequelize.define('tarea',{
         primaryKey: true
     },
     nombre: {type: Sequelize.STRING}, 
+    fk_id_estatus: {
+        type: Sequelize.UUID,
+        foreignKey: true
+    }
 },{
     timestamps: true
 });
 
-taskmodel.hasMany(cat_estatus, {
+Task.hasMany(cat_status, {
     foreignKey: 'fk_id_estatus',
     sourceKey: 'id'
 })
 
-cat_status.belongsTo(task,{
+cat_status.belongsTo(Task,{
     foreignKey: 'fk_id_estatus',
     targetId: 'id' 
 })

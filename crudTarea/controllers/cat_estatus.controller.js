@@ -1,11 +1,11 @@
 const {cat_status} = require('../models/cat_estatus')
 
 const createCatTask = async(req, res) => {
-    const {nombre} = req.body;
+    const {name} = req.body;
 
     try {
         const newCat_task = await cat_status.create({
-            nombre : nombre
+            name
         })
         console.log(newCat_task)
         res.json(newCat_task)
@@ -55,7 +55,7 @@ const updateCatTaskEstatus = async(req, res) => {
         const {nombre} = req.body;
         const cat = await cat_status.findByPk(id);
 
-        cat.nombre = nombre
+        cat.nombre = nombre;
         await cat.save();
         res.json(cat);
     } catch (error) {
