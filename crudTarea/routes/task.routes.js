@@ -3,10 +3,10 @@
 //import {getTask, createTask} from '../controllers/task.controller';
 //2da forma
 const {Router} = require('express');
-const {getTask, createTask, deleteTask, updateTask} = require('../controllers/task.controller')
+const {getTasks, createTask, deleteTask, updateTask, getTask} = require('../controllers/task.controller')
 const TaskRouter = Router();
 
-TaskRouter.get('/', getTask);
+TaskRouter.get('/', getTasks);
 TaskRouter.post('/createTask', createTask); // crear una tarea
 TaskRouter.put('/updateTask/:id', updateTask);
 TaskRouter.get('/getTask/:id', getTask);//quiero obtener 

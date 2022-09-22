@@ -6,7 +6,7 @@ var logger = require('morgan');
 //import {sequelize} from './database/database.js';
 const {TaskRouter} = require('./routes/task.routes.js')
 const {catTaskRouter} = require('./routes/cat_estatus.routes')
-const {sequelize} = require('sequelize')
+
 //import taskRouter from './routes/task.routes.js';
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');

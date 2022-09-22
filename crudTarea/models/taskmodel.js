@@ -2,28 +2,32 @@ const seqConf = require('../database/database.js');
 var Sequelize = seqConf.Sequelize
 const {cat_status} = require('./cat_estatus')
 
-const Task = seqConf.sequelize.define('tarea',{
+const Task = seqConf.sequelize.define('task',{
     id: {
         type: Sequelize.UUID,
-        autoincrement: true,
-        primaryKey: true
+        primaryKey: true, 
+        defaultValue: Sequelize.UUIDV4
     },
-    nombre: {type: Sequelize.STRING}, 
-    fk_id_estatus: {
-        type: Sequelize.UUID,
-        foreignKey: true
-    }
+    name: {type: Sequelize.STRING}, 
+    fk_status: {
+        type: Sequelize.UUID
+    },
+    estatus: {type: Sequelize.STRING}
+}, {
+    tableName: 'task'
 },{
     timestamps: true
-});
+}
+);
+
 
 Task.hasMany(cat_status, {
-    foreignKey: 'fk_id_estatus',
+    foreignKey: 'fk_status',
     sourceKey: 'id'
 })
 
 cat_status.belongsTo(Task,{
-    foreignKey: 'fk_id_estatus',
+    foreignKey: 'fk_status',
     targetId: 'id' 
 })
 
